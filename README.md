@@ -86,4 +86,3 @@ Open **http://localhost:5173** in your browser.
 - Single admin user — no authentication required
 - SQLite used for simplicity (file-based, zero-config)
 - Leave management, payroll, and advanced HR features are out of scope
-- Deployment is not included in this version
