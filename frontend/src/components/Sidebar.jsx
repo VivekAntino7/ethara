@@ -1,24 +1,27 @@
 import { NavLink } from 'react-router-dom';
-import { HiOutlineViewGrid, HiOutlineUsers, HiOutlineCalendar } from 'react-icons/hi';
+import { HiOutlineViewGrid, HiOutlineUsers, HiOutlineCalendar, HiX } from 'react-icons/hi';
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+            <button className="sidebar-close" onClick={onClose} aria-label="Close menu">
+                <HiX />
+            </button>
             <div className="sidebar-brand">
                 <h1>HRMS Lite</h1>
                 <p>Human Resource Management</p>
             </div>
             <nav className="sidebar-nav">
                 <div className="sidebar-nav-label">Main Menu</div>
-                <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
                     <span className="nav-icon"><HiOutlineViewGrid /></span>
                     Dashboard
                 </NavLink>
-                <NavLink to="/employees" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <NavLink to="/employees" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
                     <span className="nav-icon"><HiOutlineUsers /></span>
                     Employees
                 </NavLink>
-                <NavLink to="/attendance" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <NavLink to="/attendance" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
                     <span className="nav-icon"><HiOutlineCalendar /></span>
                     Attendance
                 </NavLink>
