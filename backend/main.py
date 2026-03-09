@@ -4,8 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from routers import employees, attendance
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
+# Create database tables lazily
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    print(f"Database initialization warning: {e}")
 
 app = FastAPI(
     title="HRMS Lite API",
